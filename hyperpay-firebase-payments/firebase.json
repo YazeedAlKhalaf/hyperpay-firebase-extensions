@@ -1,4 +1,7 @@
 {
+  "extensions": {
+    "hyperpay-firebase-payments": "../"
+  },
   "functions": [
     {
       "source": "functions",

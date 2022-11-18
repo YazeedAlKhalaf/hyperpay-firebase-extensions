@@ -1,0 +1,130 @@
+name: hyperpay-firebase-payments
+version: 0.0.1
+specVersion: v1beta
+
+displayName: HyperPay Payments
+description: An easy way to setup your payment backend endpoints for HyperPay.
+
+license: Apache-2.0
+
+author:
+  authorName: Yazeed AlKhalaf
+  url: https://github.com/YazeedAlKhalaf
+
+billingRequired: true # this extension makes requests to a third party API (HyperPay)
+
+externalServices:
+  - name: HyperPay
+    pricingUri: https://www.hyperpay.com/started/
+
+resources:
+  - name: Prepare Checkout
+    type: firebaseextensions.v1beta.function
+    description: Prepares checkout given you provide an amount and a currency, it returns an object containing the checkout ID.
+    properties:
+      location: ${LOCATION}
+      entryPoint: prepareCheckout
+      runtime: nodejs14
+      httpsTrigger: {}
+  
+  - name: Get Payment Status
+    type: firebaseextensions.v1beta.function
+    description: Gets the payment status given you provide a checkout ID, it returns the status of the checkout session.
+    properties:
+      location: ${LOCATION}
+      entryPoint: getPaymentStatus
+      runtime: nodejs14
+      httpsTrigger: {}
+
+params:
+  - param: LOCATION
+    label: Cloud Functions location
+    description: >-
+      Where do you want to deploy the functions created for this extension?
+      You usually want a location close to your database.
+      For help selecting a location, refer to the [location selection
+      guide](https://firebase.google.com/docs/functions/locations).
+    type: select
+    options:
+      - label: asia-east2 (Hong Kong)
+        value: asia-east2
+      - label: asia-northeast1 (Tokyo)
+        value: asia-northeast1
+      - label: asia-northeast2 (Osaka)
+        value: asia-northeast2
+      - label: asia-northeast3 (Seoul)
+        value: asia-northeast3
+      - label: asia-south1 (Mumbai)
+        value: asia-south1
+      - label: asia-southeast2 (Jakarta)
+        value: asia-southeast2
+      - label: australia-southeast1 (Sydney)
+        value: australia-southeast1
+      - label: europe-central2 (Warsaw)
+        value: europe-central2
+      - label: europe-west1 (Belgium)
+        value: europe-west1
+      - label: europe-west2 (London)
+        value: europe-west2
+      - label: europe-west3 (Frankfurt)
+        value: europe-west3
+      - label: europe-west6 (Zurich)
+        value: europe-west6
+      - label: northamerica-northeast1 (Montreal)
+        value: northamerica-northeast1
+      - label: southamerica-east1 (Sao Paulo)
+        value: southamerica-east1
+      - label: us-central1 (Iowa)
+        value: us-central1
+      - label: us-east1 (South Carolina)
+        value: us-east1
+      - label: us-east4 (Northern Virginia)
+        value: us-east4
+      - label: us-west2 (Los Angeles)
+        value: us-west2
+      - label: us-west3 (Salt Lake City)
+        value: us-west3
+      - label: us-west4 (Las Vegas)
+        value: us-west4
+    default: us-central1
+    required: true
+    immutable: true
+  
+  - param: HYPERPAY_AUTHORIZATION_TOKEN
+    label: HyperPay Authorization Token
+    description: >-
+      What is your HyperPay Authorization Token?
+      This the token you get from HyperPay when you create an account,
+      it is used to authenticate your requests to HyperPay API.
+      It is a base64 encoded token.
+
+      HyperPay's description:
+      Authorization header with Bearer authentication scheme. Access token can be taken from the backend UI under Administration > Account data > Merchant / Channel Info only if you have specific administration rights.
+    type: string
+    example: OGE4Mjk0MTc0YjdlY2IyODAxNGI5Njk5MjIwMDE1Y2N8c3k2S0pzVDg=
+    required: true
+
+  - param: HYPERPAY_ENTITY_ID
+    label: HyperPay Entity ID
+    description: >-
+      What is your HyperPay Entity ID?
+      This is an ID that is used to identify your merchant with HyperPay.
+      It is a string of length 32 characters, that contain lower case letters from 'a' to 'f' and numbers from '0' to '9'.
+
+      HyperPay's description:
+      The entity required to authorize the request. This should be the channel entity identifier. In case channel dispatching is activated then it should be the merchant entity identifier.
+    type: string
+    example: 8a8294174b7ecb28014b9699220015ca
+    validationRegex: ^[a-f0-9]{32}$
+    required: true
+  
+  - param: PREPARE_CHECKOUT_MIN_INSTANCES
+    label: Minimum instances for prepareCheckout function
+    description: >-
+      Set the minimum number of function instances that should be always be available to prepareCheckout.
+      This number can be adjusted to reduce cold starts and increase the responsiveness
+      of prepareCheckout requests. Suggested values are 0 or 1. Please note this setting will likely incur billing costss, see the [Firebase documentation](https://firebase.google.com/docs/functions/manage-functions#reduce_the_number_of_cold_starts) for more information.
+    type: string
+    default: 0
+    validationRegex: ^[0-9]+$
+    required: true
