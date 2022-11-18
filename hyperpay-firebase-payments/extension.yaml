@@ -18,7 +18,7 @@ externalServices:
     pricingUri: https://www.hyperpay.com/started/
 
 resources:
-  - name: Prepare Checkout
+  - name: prepareCheckout
     type: firebaseextensions.v1beta.function
     description: Prepares checkout given you provide an amount and a currency, it returns an object containing the checkout ID.
     properties:
@@ -27,7 +27,7 @@ resources:
       runtime: nodejs14
       httpsTrigger: {}
   
-  - name: Get Payment Status
+  - name: getPaymentStatus
     type: firebaseextensions.v1beta.function
     description: Gets the payment status given you provide a checkout ID, it returns the status of the checkout session.
     properties:
