@@ -7,6 +7,9 @@ description: An easy way to setup your payment backend endpoints for HyperPay.
 
 license: Apache-2.0
 
+sourceUrl: https://github.com/YazeedAlKhalaf/hyperpay-firebase-extensions/tree/main/hyperpay-firebase-payments
+releaseNotesUrl: https://github.com/YazeedAlKhalaf/hyperpay-firebase-extensions/blob/main/hyperpay-firebase-payments/CHANGELOG.md
+
 author:
   authorName: Yazeed AlKhalaf
   url: https://github.com/YazeedAlKhalaf
