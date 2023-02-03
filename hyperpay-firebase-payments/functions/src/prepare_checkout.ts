@@ -2,6 +2,7 @@ import * as functions from "firebase-functions";
 import * as https from "https";
 import * as querystring from "querystring";
 import config from "./config";
+import { Utils } from "./utils";
 
 export async function prepareCheckout(
   req: functions.https.Request,
@@ -28,7 +29,7 @@ export async function prepareCheckout(
   });
   const options: https.RequestOptions = {
     port: 443,
-    host: "eu-test.oppwa.com",
+    host: Utils.getApiHostFromEnvironmentType(),
     path: path,
     method: "POST",
     headers: {

@@ -1,6 +1,7 @@
 import * as functions from "firebase-functions";
 import * as https from "https";
 import config from "./config";
+import { Utils } from "./utils";
 
 export async function getPaymentStatus(
   req: functions.https.Request,
@@ -19,7 +20,7 @@ export async function getPaymentStatus(
 
   const options: https.RequestOptions = {
     port: 443,
-    host: "eu-test.oppwa.com",
+    host: Utils.getApiHostFromEnvironmentType(),
     path: path,
     method: "GET",
     headers: {

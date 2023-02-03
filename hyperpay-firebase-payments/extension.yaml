@@ -93,6 +93,21 @@ params:
     required: true
     immutable: true
   
+  - param: HYPERPAY_ENVIRONMENT
+    label: HyperPay Environment
+    description: >-
+      What is your HyperPay Environment?
+      This is the environment you are using with HyperPay, it can be either "test" or "live".
+      It is used to determine the base URL for the HyperPay API.
+    type: select
+    options:
+      - label: Test
+        value: test
+      - label: Live
+        value: live
+    required: true
+
+
   - param: HYPERPAY_AUTHORIZATION_TOKEN
     label: HyperPay Authorization Token
     description: >-
