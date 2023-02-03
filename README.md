@@ -5,7 +5,5 @@ This repository contains the source code for the Firebase Extensions for integra
 ## Extensions
 
 1. HyperPay Payments Backend
-   [![Install this extension in your Firebase project](https://www.gstatic.com/mobilesdk/210513_mobilesdk/install-extension.png "Install this extension in your Firebase project")][install-link]
+   - [Install Extension](https://console.firebase.google.com/project/_/extensions/install?ref=yazeedalkhalaf/hyperpay-firebase-payments)
    - [Source Code](./hyperpay-firebase-payments/)
-
-[install-link]: https://console.firebase.google.com/project/_/extensions/install?ref=yazeedalkhalaf/hyperpay-firebase-payments
