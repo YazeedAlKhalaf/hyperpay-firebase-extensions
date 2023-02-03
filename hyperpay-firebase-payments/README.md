@@ -11,6 +11,24 @@ This extension supports the following use cases:
 - Process one-time payments with [Mobile SDK](https://wordpresshyperpay.docs.oppwa.com/tutorials/mobile-sdk).
 - Process one-time payments with [COPYandPAY](https://wordpresshyperpay.docs.oppwa.com/tutorials/integration-guide).
 
+## 🧩 Install this extension
+
+### Console
+
+[![Install this extension in your Firebase project](https://www.gstatic.com/mobilesdk/210513_mobilesdk/install-extension.png "Install this extension in your Firebase project")][install-link]
+
+[install-link]: https://console.firebase.google.com/project/_/extensions/install?ref=yazeedalkhalaf/hyperpay-firebase-payments
+
+### Firebase CLI
+
+```bash
+firebase ext:install yazeedalkhalaf/hyperpay-firebase-payments --project=[your-project-id]
+```
+
+> Learn more about installing extensions in the Firebase Extensions documentation:
+> [console](https://firebase.google.com/docs/extensions/install-extensions?platform=console),
+> [CLI](https://firebase.google.com/docs/extensions/install-extensions?platform=cli)
+
 #### Billing
 
 This extension uses the following Firebase services which may have associated charges:
