@@ -9,7 +9,7 @@ This extension supports the following use cases:
 
 This extension uses the following Firebase services which may have associated charges:
 
-- Cloud Funtions
+- Cloud Functions
 
 This extensions also uses the following third-party services:
 
